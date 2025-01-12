@@ -1,0 +1,26 @@
+{
+   "name": "xanui-icons",
+   "version": "1.0.0",
+   "description": "",
+   "main": "./index.js",
+   "scripts": {
+      "generate": "node generate.js",
+      "start": "makepack serve",
+      "pack": "npm run generate && makepack pack",
+      "publish:pack": "npm run generate && makepack pack -p"
+   },
+   "dependencies": {
+      "@xanui/core": "^1.0.0",
+      "react": "^19.0.0",
+      "react-dom": "^19.0.0"
+   },
+   "devDependencies": {
+      "@material-design-icons/svg": "^0.14.13",
+      "@types/react": "^19.0.2",
+      "@types/react-dom": "^19.0.2",
+      "makepack": "latest",
+      "node-html-parser": "^7.0.1",
+      "typescript": "^4.4.2"
+   },
+   "keywords": []
+}

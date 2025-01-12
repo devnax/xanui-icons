@@ -1,8 +1,11 @@
 {
-   "name": "xanui-icons",
+   "name": "@xanui/icons",
    "version": "1.0.0",
    "description": "",
    "main": "./index.js",
+   "publishConfig": {
+      "access": "public"
+   },
    "scripts": {
       "generate": "node generate.js",
       "start": "makepack serve",

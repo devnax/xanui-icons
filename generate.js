@@ -25,16 +25,11 @@ const convert = async (dirname) => {
             const svg = parsed.querySelector("svg")
             let html = svg.innerHTML.replaceAll("xlink:href", "xlinkHref")
             const component = `import React from 'react'
-import Icon, { IconProps } from '../'
-
-const ${compName} = (props: IconProps) => {
-    return (
-        <Icon {...props} >${html}</Icon>
-    )
+import Icon, { IconProps } from '../Icon'
+export default function ${compName}(props: IconProps){
+    return <Icon {...props}>${html}</Icon>
 }
-
-export default ${compName}
-            `;
+`;
 
             !fs.existsSync(outputDirectory) && fs.mkdirSync(outputDirectory)
             fs.writeFileSync(outputDirectory + `/${compName}.tsx`, component)
@@ -47,13 +42,12 @@ const start = async () => {
 
     const component = `import React, { forwardRef } from 'react';
 import { Tag, TagProps } from '@xanui/core';
-
 export type IconProps = TagProps<"svg">
-
-const Icon = forwardRef(({ children, sx, ...rest }: IconProps, ref: React.Ref<any>) => {
-    const sp = {
+const Icon = forwardRef(({ children, ...rest }: IconProps, ref: React.Ref<any>) => {
+    const sp:any = {
         xmlns: "http://www.w3.org/2000/svg",
-        viewBox: "0 0 24 24"
+        viewBox: "0 0 24 24",
+        fill:"currentColor"
     }
     return (
         <Tag 
@@ -62,7 +56,6 @@ const Icon = forwardRef(({ children, sx, ...rest }: IconProps, ref: React.Ref<an
             {...sp}
             baseClass='svg-icon'
             sxr={{
-                fill: "currentColor",
                 fontSize: 24,
                 userSelect: "none",
                 width: "1em",
@@ -70,27 +63,20 @@ const Icon = forwardRef(({ children, sx, ...rest }: IconProps, ref: React.Ref<an
                 display: "inline-block",
                 verticalAlign: "middle",
             }}
-        ref={ref}
+            ref={ref}
         >{children}</Tag>
     )
 })
-
-export default Icon
-            `;
+export default Icon;
+`;
     const outputDirectory = path.join(__dirname, `src/`);
     !fs.existsSync(outputDirectory) && fs.mkdirSync(outputDirectory);
-    fs.writeFileSync(outputDirectory + `/index.tsx`, component)
+    fs.writeFileSync(outputDirectory + `/Icon.tsx`, component)
 
     const dirs = ["filled", "outlined", "round", "sharp", "two-tone"]
     for (let dir of dirs) {
         await convert(dir)
     }
-
 }
 
 start()
-
-// app.get('/', )
-
-
-// app.listen(5000)

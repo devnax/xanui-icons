@@ -12,6 +12,7 @@ const HTMLParser = require('node-html-parser')
 const convert = async (dirname) => {
     const directory = path.join(__dirname, `node_modules/@material-design-icons/svg/${dirname}`)
     const outputDirectory = path.join(__dirname, `src/${dirname}`)
+
     fs.readdir(directory, function (err, files) {
         if (err) {
             return console.log('Unable to scan directory: ' + err);

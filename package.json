@@ -1,15 +1,8 @@
 {
    "name": "@xanui/icons",
-   "version": "1.1.3",
+   "version": "1.1.4",
    "description": "A collection of icons for the Xanui framework.",
    "private": false,
-   "exports": {
-      "./*": {
-         "types": "./types/*.d.ts",
-         "import": "./*.js",
-         "require": "./cjs/*.js"
-      }
-   },
    "scripts": {
       "start": "makepack start",
       "build": "makepack build",
@@ -17,14 +10,14 @@
       "generate": "node generate/index.js"
    },
    "dependencies": {
-      "@xanui/core": "^1.0.21"
+      "@xanui/core": "^1.0.22"
    },
    "devDependencies": {
       "@material-design-icons/svg": "^0.14.13",
       "@types/react": "^19.0.2",
       "@types/react-dom": "^19.0.2",
       "fs-extra": "^11.3.0",
-      "makepack": "^1.5.10",
+      "makepack": "^1.5.24",
       "node-html-parser": "^7.0.1",
       "number-to-words": "^1.2.4",
       "react": "^19.0.0",

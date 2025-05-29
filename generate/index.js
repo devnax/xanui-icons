@@ -1,7 +1,7 @@
-const path = require('path');
-const fs = require('fs-extra');
-const createIconComponent = require('./Icon.js');
-const convert = require('./convert.js');
+import path from 'path';
+import fs from 'fs-extra';
+import createIconComponent from './Icon.js';
+import convert from './convert.js';
 
 /**
  * 
@@ -10,15 +10,15 @@ const convert = require('./convert.js');
  */
 
 const start = async () => {
+   const srcPath = path.join("./src");
 
-   const srcPath = path.join(__dirname, `../src`);
    const exists = await fs.pathExists(srcPath);
    if (exists) {
       await fs.remove(srcPath);
    }
-   await fs.ensureDir(srcPath)
-   await createIconComponent()
-   await convert()
-}
+   await fs.mkdir(srcPath, { recursive: true });
+   await createIconComponent();
+   await convert();
+};
 
-start()
+start();

@@ -1,5 +1,5 @@
-const path = require('path');
-const fs = require('fs-extra');
+import path from 'path';
+import fs from 'fs-extra';
 
 const createIconComponent = async () => {
     const component = `import React, { forwardRef } from 'react';
@@ -31,7 +31,7 @@ const Icon = forwardRef(({ children, ...rest }: IconProps, ref: React.Ref<any>) 
 })
 export default Icon;
 `;
-    await fs.outputFile(path.join(__dirname, `../src/Icon.tsx`), component);
+    await fs.outputFile(path.join(`./src/Icon.tsx`), component);
 }
 
-module.exports = createIconComponent
+export default createIconComponent;

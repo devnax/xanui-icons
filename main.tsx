@@ -1,6 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import Icon1k from './src/ABC'
+// import { Tag } from '@xanui/core';
 
 const App = () => {
   return (
@@ -16,6 +17,12 @@ const App = () => {
         Learn React
       </a>
       <div style={{ marginTop: "50px" }}>
+        {/* <Tag
+          color="#61dafb"
+          style={{ fontSize: '24px', padding: '10px', borderRadius: '5px' }}
+        >
+          Hello, Xanui!
+        </Tag> */}
         <Icon1k
           color="#61dafb"
         />

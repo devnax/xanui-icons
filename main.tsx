@@ -1,6 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import Icon1k from './src/ABC'
+import { Home } from './src'
 // import { Tag } from '@xanui/core';
 
 const App = () => {
@@ -23,7 +24,7 @@ const App = () => {
         >
           Hello, Xanui!
         </Tag> */}
-        <Icon1k
+        <Home
           color="#61dafb"
         />
       </div>

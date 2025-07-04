@@ -22,12 +22,12 @@ function makeComponentName(filename, dirname) {
 }
 
 const convert = async () => {
-   const dirs = ["filled", "outlined", "round", "sharp", "two-tone"];
+   const dirs = ["outlined", "round", "sharp"];
    const names = {};
    for (let dirname of dirs) {
       const directory = path.join(`./node_modules/@material-design-icons/svg/${dirname}`);
       try {
-         const files = await fs.readdir(directory, 'utf8');
+         const files = (await fs.readdir(directory, 'utf8')).reverse();
          for (let file of files) {
             let name = makeComponentName(file, dirname === 'two-tone' ? "" : dirname);
             let key = name.toLowerCase();
@@ -57,7 +57,7 @@ export default function ${name}(props: IconProps){
    // write index file
    let index = `export { default as Icon } from './Icon'\n`;
    index += Object.values(names).join("\n");
-   await fs.outputFile(path.join(path.dirname(new URL(import.meta.url).pathname), `../src/index.ts`), index);
+   await fs.writeFileSync(path.join(`./src/index.ts`), index, 'utf8');
 };
 
 export default convert;

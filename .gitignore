@@ -1,3 +1,5 @@
 node_modules
 .mpack
 src
+bun.lock
+package-lock.json

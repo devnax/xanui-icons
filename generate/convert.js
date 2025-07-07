@@ -29,7 +29,7 @@ const convert = async () => {
       try {
          const files = (await fs.readdir(directory, 'utf8')).reverse();
          for (let file of files) {
-            let name = makeComponentName(file, dirname === 'two-tone' ? "" : dirname);
+            let name = makeComponentName(file, dirname === 'round' ? "" : dirname);
             let key = name.toLowerCase();
             if (names[key]) {
                // name = makeComponentName(file, "One" + ucFirst(dirname))
